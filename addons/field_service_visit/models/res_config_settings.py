@@ -21,7 +21,7 @@ class ResConfigSettings(models.TransientModel):
         IrConfig = self.env["ir.config_parameter"].sudo()
         res.update(
             fastapi_base_url=IrConfig.get_param("field_service_visit.fastapi_base_url", default="http://127.0.0.1:8000"),
-            fastapi_api_key=IrConfig.get_param("field_service_visit.fastapi_api_key", default="secret123"),
+            fastapi_api_key=IrConfig.get_param("field_service_visit.fastapi_api_key", default="devkey"),
         )
         loc_id = IrConfig.get_param("field_service_visit.stock_location_id")
         res["stock_location_id"] = int(loc_id) if loc_id and loc_id.isdigit() else False

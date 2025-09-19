@@ -79,3 +79,7 @@ class StockConnector(models.AbstractModel):
         except Exception as e:
             _logger.exception("Bulk sync exception: %s", e)
             return {"ok": False, "error": str(e)}
+
+    def action_test_connection(self):
+        from odoo.addons.field_service_visit.services.connector import ping
+        return ping(self.env)

@@ -1,0 +1,13 @@
+[Unit]
+Description=Odoo 17 Service
+After=network.target
+
+[Service]
+Type=simple
+User=%i
+WorkingDirectory=/home/%i/work/coflowTestCase
+ExecStart=/home/%i/work/coflowTestCase/venv/bin/python odoo-src/odoo-bin -c odoo.conf
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
