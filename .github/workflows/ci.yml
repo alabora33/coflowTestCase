@@ -1,0 +1,48 @@
+name: Odoo & FastAPI CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+      - name: Install flake8 and black
+        run: |
+          pip install flake8 black
+      - name: Run flake8
+        run: flake8 addons/field_service_visit fastapi_app
+      - name: Run black check
+        run: black --check addons/field_service_visit fastapi_app
+
+  odoo-test:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:14
+        env:
+          POSTGRES_USER: odoo17
+          POSTGRES_PASSWORD: odoo17
+          POSTGRES_DB: odoo_test
+        ports:
+          - 5432:5432
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+      - name: Install Odoo dependencies
+        run: |
+          pip install -r odoo-src/requirements.txt
+      - name: Run Odoo tests
+        run: |
+          python odoo-src/odoo-bin -c odoo.conf -d odoo_test --test-enable -i field_service_visit --stop-after-init

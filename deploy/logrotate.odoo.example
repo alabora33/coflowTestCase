@@ -1,0 +1,14 @@
+/var/log/odoo/odoo.log {
+    daily
+    missingok
+    rotate 14
+    compress
+    delaycompress
+    notifempty
+    create 640 root root
+    copytruncate
+    postrotate
+        # Odoo servisini yeniden başlat (servis adını sistemine göre düzenle)
+        systemctl restart odoo || true
+    endscript
+}

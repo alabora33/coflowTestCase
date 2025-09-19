@@ -1,0 +1,15 @@
+<odoo>
+    <!-- Mail Template: Visit Planned Notification -->
+    <record id="mail_template_visit_planned" model="mail.template">
+        <field name="name">Visit Planned Notification</field>
+        <field name="model_id" ref="field_service_visit.model_field_service_visit"/>
+        <field name="subject">Visit Planned: ${object.name}</field>
+        <field name="email_from">${(user.email or 'noreply@example.com')|safe}</field>
+        <field name="email_to">${object.customer_id.email or ''}</field>
+        <field name="body_html"><![CDATA[
+            <p>Hello ${object.customer_id.name},</p>
+            <p>Your visit <strong>${object.name}</strong> is planned for ${object.date_start}.</p>
+            <p>Thank you.</p>
+        ]]></field>
+    </record>
+</odoo>

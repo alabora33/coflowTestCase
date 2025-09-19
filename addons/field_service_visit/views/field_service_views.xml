@@ -1,0 +1,110 @@
+
+<odoo>
+	<!-- Tree View -->
+	<record id="view_field_service_visit_tree" model="ir.ui.view">
+		<field name="name">field.service.visit.tree</field>
+		<field name="model">field.service.visit</field>
+		<field name="arch" type="xml">
+			<tree string="Visits">
+				<field name="name"/>
+				<field name="customer_id"/>
+				<field name="employee_id"/>
+				<field name="date_start"/>
+				<field name="date_end"/>
+				<field name="duration_hours"/>
+				<field name="state"/>
+			</tree>
+		</field>
+	</record>
+
+	<!-- Form View -->
+	<record id="view_field_service_visit_form" model="ir.ui.view">
+		<field name="name">field.service.visit.form</field>
+		<field name="model">field.service.visit</field>
+		<field name="arch" type="xml">
+			<form string="Visit">
+				<sheet>
+					<group>
+						<field name="name"/>
+						<field name="customer_id"/>
+						<field name="employee_id"/>
+						<field name="date_start"/>
+						<field name="date_end"/>
+						<field name="duration_hours" readonly="1"/>
+						<field name="state"/>
+					</group>
+					<notebook>
+						<page string="Notes">
+							<field name="notes"/>
+						</page>
+					</notebook>
+					<footer>
+						<!-- Odoo 17+: attrs kaldırıldı, görünürlük Python tarafında kontrol edilmeli -->
+						<button name="action_set_planned" string="Set Planned" type="object" class="btn-primary"/>
+						<button name="action_set_planned_and_notify" string="Set Planned &amp; Notify" type="object" class="btn-info"/>
+						<button name="action_set_in_progress" string="Start" type="object" class="btn-primary"/>
+						<button name="action_set_done" string="Finish" type="object" class="btn-success"/>
+						<button name="action_set_cancel" string="Cancel" type="object" class="btn-secondary"/>
+					</footer>
+				</sheet>
+			</form>
+		</field>
+	</record>
+
+	<!-- Kanban View -->
+	<record id="view_field_service_visit_kanban" model="ir.ui.view">
+		<field name="name">field.service.visit.kanban</field>
+		<field name="model">field.service.visit</field>
+		<field name="arch" type="xml">
+			<kanban default_group_by="state">
+				<field name="name"/>
+				<field name="customer_id"/>
+				<field name="employee_id"/>
+				<field name="date_start"/>
+				<field name="date_end"/>
+				<field name="state"/>
+				<templates>
+					<t t-name="kanban-box">
+						<div class="oe_kanban_global_click">
+							<strong><field name="name"/></strong><br/>
+							<span><field name="customer_id"/></span><br/>
+							<span><field name="employee_id"/></span><br/>
+							<span><field name="date_start"/> - <field name="date_end"/></span><br/>
+							<span><field name="state"/></span>
+						</div>
+					</t>
+				</templates>
+			</kanban>
+		</field>
+	</record>
+
+	<!-- Calendar View -->
+	<record id="view_field_service_visit_calendar" model="ir.ui.view">
+		<field name="name">field.service.visit.calendar</field>
+		<field name="model">field.service.visit</field>
+		<field name="arch" type="xml">
+			<calendar string="Visits" date_start="date_start" date_stop="date_end" color="employee_id">
+				<field name="name"/>
+				<field name="customer_id"/>
+				<field name="employee_id"/>
+			</calendar>
+		</field>
+	</record>
+
+	<!-- Search View -->
+	<record id="view_field_service_visit_search" model="ir.ui.view">
+		<field name="name">field.service.visit.search</field>
+		<field name="model">field.service.visit</field>
+		<field name="arch" type="xml">
+			<search string="Visit Search">
+				<field name="name"/>
+				<field name="customer_id"/>
+				<field name="employee_id"/>
+				<field name="state"/>
+				<filter name="planned" string="Planned" domain="[('state','=','planned')]"/>
+				<filter name="in_progress" string="In Progress" domain="[('state','=','in_progress')]"/>
+				<filter name="done" string="Done" domain="[('state','=','done')]"/>
+			</search>
+		</field>
+	</record>
+</odoo>

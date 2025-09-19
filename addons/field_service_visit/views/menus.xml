@@ -1,0 +1,17 @@
+
+<odoo>
+	<record id="action_field_service_visit" model="ir.actions.act_window">
+		<field name="name">Visits</field>
+		<field name="res_model">field.service.visit</field>
+		<field name="view_mode">tree,form,kanban,calendar</field>
+		<field name="search_view_id" ref="field_service_visit.view_field_service_visit_search"/>
+		<field name="context">{}</field>
+		<field name="help" type="html">
+			<p class="o_view_nocontent_smiling_face">
+				Create your first field service visit.
+			</p>
+		</field>
+	</record>
+	<menuitem id="menu_field_service_root" name="Field Service" sequence="10"/>
+	<menuitem id="menu_field_service_visit" name="Visits" parent="menu_field_service_root" action="action_field_service_visit" sequence="20"/>
+</odoo>

@@ -1,0 +1,13 @@
+[Unit]
+Description=Odoo 17 Service
+After=network.target
+
+[Service]
+Type=simple
+User=odoo
+WorkingDirectory=/opt/odoo
+ExecStart=/opt/odoo/venv/bin/python /opt/odoo/odoo-src/odoo-bin -c /opt/odoo/odoo.conf
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

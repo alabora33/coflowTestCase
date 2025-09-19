@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_field_service_visit_user,field.service.visit user,model_field_service_visit,field_service_visit.group_field_service_user,1,1,1,0
+access_field_service_visit_manager,field.service.visit manager,model_field_service_visit,field_service_visit.group_field_service_manager,1,1,1,1

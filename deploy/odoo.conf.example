@@ -1,0 +1,14 @@
+[options]
+addons_path = ./odoo-src/addons,./addons
+data_dir    = ./odoo-data
+db_host     = 127.0.0.1
+db_port     = 5432
+db_user     = odoo17
+db_password = MASKED_PASSWORD
+http_port   = 8069
+workers     = 2
+proxy_mode  = True
+log_level   = info
+limit_time_real = 120
+admin_passwd = MASKED_ADMIN_PASS
+without_demo = all

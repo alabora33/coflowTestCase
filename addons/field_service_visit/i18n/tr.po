@@ -1,0 +1,13 @@
+# Turkish translation template for field_service_visit
+msgid ""
+msgstr ""
+"Project-Id-Version: field_service_visit 1.0\n"
+"POT-Creation-Date: 2025-09-19\n"
+"Language: tr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: model:ir.model,name:field_service_visit.model_field_service_visit
+msgid "Field Service Visit"
+msgstr "Saha Servis Ziyareti"

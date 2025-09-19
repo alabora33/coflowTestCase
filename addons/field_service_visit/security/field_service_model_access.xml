@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="model_field_service_visit" model="ir.model">
+        <field name="name">field.service.visit</field>
+        <field name="model">field.service.visit</field>
+        <field name="state">base</field>
+    </record>
+</odoo>
